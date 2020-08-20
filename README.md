@@ -15,7 +15,7 @@ cd risingacad-api
 Once you clone project,
 
 ```
-> copy **.env.local** file to **.env** file
+> copy .env.local file to .env file
 ```
 
 ### Installing
