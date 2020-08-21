@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 // eslint-disable-next-line
 import { Users } from "../../models";
 
@@ -19,7 +20,18 @@ export const allUsers = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-	console.log(req.body);
-	// add logic
-	res.send('ok');
+	try {
+		const user = await Users.scope('withSecretColumns').findOne({
+			where: { username: req.body.username, password: req.body.password },
+		});
+		if (!user) {
+			throw new Error('Incorrect Username /Password');
+		}
+
+		const token = jwt.sign({ user }, process.env.SECRET);
+		delete user.dataValues.password;
+		return successResponse(req, res, { user, token });
+	} catch (error) {
+		return errorResponse(req, res, error.message);
+	}
 };
