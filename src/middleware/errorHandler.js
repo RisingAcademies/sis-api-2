@@ -1,4 +1,3 @@
-import { errorResponse } from '../helpers';
 // eslint-disable-next-line
 const errorHandler = (err, req, res, next) => {
 	if (err && err.message === 'validation error') {
@@ -9,7 +8,11 @@ const errorHandler = (err, req, res, next) => {
 		} else {
 			messages = `${messages.join(', ')} is required field`;
 		}
-		return errorResponse(req, res, messages, 400, err);
+		return res.status(500).json({
+			err,
+			data: null,
+			success: false,
+		});
 	}
 	return false;
 };
