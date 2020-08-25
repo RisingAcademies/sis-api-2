@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 			age: DataTypes.STRING,
 			mother: DataTypes.STRING,
 			father: DataTypes.STRING,
+			registeredDate: DataTypes.DATE,
 			deletedAt: DataTypes.DATE,
 			createdAt: DataTypes.DATE,
 			updatedAt: DataTypes.DATE,

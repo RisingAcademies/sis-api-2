@@ -31,6 +31,9 @@ module.exports = {
 			father: {
 				type: Sequelize.STRING,
 			},
+			registeredDate: {
+				type: Sequelize.DATE,
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,

@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	// eslint-disable-next-line
   Users.associate = function (models) {
-		console.log();
 		// associations can be defined here
 	};
 	return Users;

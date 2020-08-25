@@ -20,6 +20,7 @@ app.use(
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/src/assets', express.static(`${__dirname}/src/assets`)); // SERVE STATIC FILES FROM ASSETS FOLDER
 app.use('/', routes);
 app.use(errorHandler);
 
