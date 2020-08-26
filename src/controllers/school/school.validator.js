@@ -1,13 +1,13 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 export const StudentBySchoolId = {
-	params: {
-		id: Joi.number().required(),
-	},
+  params: {
+    id: Joi.number().required(),
+  },
 };
 
 export const newValidation2 = {
-	body: {
-		userId: Joi.number().required(),
-	},
+  body: {
+    userId: Joi.number().required(),
+  },
 };
