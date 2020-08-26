@@ -1,11 +1,8 @@
+import { createObjectCsvWriter as createCsvWriter } from 'csv-writer';
+import path from 'path';
 // eslint-disable-next-line
-import { Students, Attendances, Schools, Sequelize } from "../../models";
-
+import { Students, Attendances, Schools, Sequelize, sequelize } from '../../models';
 import { successResponse, errorResponse } from '../../helpers';
-
-// CSV WRITER
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const path = require('path');
 
 export const getStudentById = async (req, res) => {
 	try {
@@ -27,7 +24,7 @@ export const getStudentById = async (req, res) => {
 };
 
 export const addStudent = async (req, res) => {
-	const t = await Sequelize.transaction();
+	const t = await sequelize.transaction();
 	try {
 		const student = await Students.create(req.body, { transaction: t });
 		const attendances = await Attendances.create(
@@ -141,9 +138,10 @@ export const getExportStudents = async (req, res) => {
 		});
 
 		await csvWriter.writeRecords(students);
+		console.log('getExportStudents -> req', req.headers.origin);
 		return successResponse(req, res, {
 			// eslint-disable-next-line
-      csv_url: `${process.env.BASE_URL}src/assets/Csv/students.csv`,
+      csv_url: `http://${req.headers["host"]}/src/assets/Csv/students.csv`,
 		});
 	} catch (error) {
 		console.error('getExportStudents -> error', error);
