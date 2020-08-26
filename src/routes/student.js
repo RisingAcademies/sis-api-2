@@ -10,15 +10,29 @@ const router = express.Router();
 //= ===============================
 // API routes
 //= ===============================
-router.get('/export/:schoolId', isLoggedin, studentController.getExportStudents);
+router.get(
+	'/export/:schoolId',
+	isLoggedin,
+	studentController.getExportStudents,
+);
 
 router.get('/search', isLoggedin, studentController.getSearchStudents);
 
 router.get('/:id', studentController.getStudentById);
 
-router.post('/add', isLoggedin, validate(studentValidator.addStudent), studentController.addStudent);
+router.post(
+	'/',
+	isLoggedin,
+	validate(studentValidator.addStudent),
+	studentController.addStudent,
+);
 
-router.put('/edit', isLoggedin, validate(studentValidator.editStudent), studentController.editStudent);
+router.put(
+	'/',
+	isLoggedin,
+	validate(studentValidator.editStudent),
+	studentController.editStudent,
+);
 
 router.put('/register/:id', isLoggedin, studentController.registerStudent);
 

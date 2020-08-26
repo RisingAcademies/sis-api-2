@@ -1,6 +1,5 @@
-
 // eslint-disable-next-line
-import { Students, Attendances, Schools, Sequelize } from '../../models';
+import { Students, Attendances, Schools, Sequelize } from "../../models";
 
 import { successResponse, errorResponse } from '../../helpers';
 
@@ -31,10 +30,13 @@ export const addStudent = async (req, res) => {
 	const t = await Sequelize.transaction();
 	try {
 		const student = await Students.create(req.body, { transaction: t });
-		const attendances = await Attendances.create({
-			schoolId: req.body.schoolId,
-			studentId: student.id,
-		}, { transaction: t });
+		const attendances = await Attendances.create(
+			{
+				schoolId: req.body.schoolId,
+				studentId: student.id,
+			},
+			{ transaction: t },
+		);
 		await t.commit();
 
 		return successResponse(req, res, attendances);
@@ -46,12 +48,23 @@ export const addStudent = async (req, res) => {
 
 export const editStudent = async (req, res) => {
 	try {
-		const student = await Students.update(req.body, {
+		const student = Students.update(req.body, {
 			where: {
 				id: req.body.id,
 			},
 		});
-		return successResponse(req, res, student);
+		const attendance = Attendances.update(
+			{
+				grade: req.body.grade,
+			},
+			{
+				where: {
+					id: req.body.attendanceId,
+				},
+			},
+		);
+		await Promise.all([student, attendance]);
+		return successResponse(req, res);
 	} catch (error) {
 		return errorResponse(req, res, error.message);
 	}
@@ -130,7 +143,7 @@ export const getExportStudents = async (req, res) => {
 		await csvWriter.writeRecords(students);
 		return successResponse(req, res, {
 			// eslint-disable-next-line
-			csv_url: `${process.env.BASE_URL}src/assets/Csv/students.csv`,
+      csv_url: `${process.env.BASE_URL}src/assets/Csv/students.csv`,
 		});
 	} catch (error) {
 		console.error('getExportStudents -> error', error);
@@ -140,13 +153,16 @@ export const getExportStudents = async (req, res) => {
 
 export const registerStudent = async (req, res) => {
 	try {
-		await Students.update({
-			registeredDate: new Date(),
-		}, {
-			where: {
-				id: req.params.id,
+		await Students.update(
+			{
+				registeredDate: new Date(),
 			},
-		});
+			{
+				where: {
+					id: req.params.id,
+				},
+			},
+		);
 		return successResponse(req, res);
 	} catch (error) {
 		return errorResponse(req, res, error.message);
@@ -155,13 +171,16 @@ export const registerStudent = async (req, res) => {
 
 export const unregisterStudent = async (req, res) => {
 	try {
-		await Students.update({
-			registeredDate: null,
-		}, {
-			where: {
-				id: req.params.id,
+		await Students.update(
+			{
+				registeredDate: null,
 			},
-		});
+			{
+				where: {
+					id: req.params.id,
+				},
+			},
+		);
 		return successResponse(req, res);
 	} catch (error) {
 		return errorResponse(req, res, error.message);

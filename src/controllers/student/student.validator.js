@@ -28,5 +28,6 @@ export const addStudent = {
 export const editStudent = {
 	body: {
 		id: Joi.number().required(),
+		attendanceId: Joi.number().required(),
 	},
 };

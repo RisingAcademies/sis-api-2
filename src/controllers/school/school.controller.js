@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { Schools, Students } from '../../models';
+import { Schools, Students } from "../../models";
 
 import { successResponse, errorResponse } from '../../helpers';
 // import  from "../../models/attendances";
