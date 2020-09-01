@@ -8,7 +8,7 @@ import {
   sequelize,
   Sequelize,
 } from "../../models";
-/*eslint-enable*/
+/* eslint-enable */
 import { successResponse, errorResponse } from "../../helpers";
 
 export const getStudentById = async (req, res) => {
