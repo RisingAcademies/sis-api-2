@@ -37,6 +37,7 @@ export const getStudsBySchlId = async (req, res) => {
 				'father',
 				'registeredDate',
 				'createdAt',
+				'updatedAt',
 			],
 			include: [
 				{
