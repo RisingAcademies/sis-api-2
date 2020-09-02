@@ -19,7 +19,7 @@ export const addStudent = {
 		lastname: Joi.string().required(),
 		phone: Joi.string().required(),
 		address: Joi.string().required(),
-		age: Joi.string().required(),
+		dob: Joi.string().required(),
 		mother: Joi.string().required(),
 		father: Joi.string().required(),
 	},

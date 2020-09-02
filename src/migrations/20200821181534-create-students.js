@@ -22,8 +22,8 @@ module.exports = {
 			address: {
 				type: Sequelize.STRING,
 			},
-			age: {
-				type: Sequelize.STRING,
+			dob: {
+				type: Sequelize.DATEONLY,
 			},
 			mother: {
 				type: Sequelize.STRING,

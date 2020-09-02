@@ -6,6 +6,13 @@ export const StudentBySchoolId = {
 	},
 };
 
+export const StudentDetailsBySchoolId = {
+	params: {
+		id: Joi.number().required(),
+		schoolId: Joi.number().required(),
+	},
+};
+
 export const newValidation2 = {
 	body: {
 		userId: Joi.number().required(),
