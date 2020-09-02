@@ -18,8 +18,6 @@ router.get(
 
 router.get('/search', isLoggedin, studentController.getSearchStudents);
 
-router.get('/:id', studentController.getStudentById);
-
 router.post(
 	'/',
 	isLoggedin,

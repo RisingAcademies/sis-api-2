@@ -16,5 +16,10 @@ router.get(
 	validate(schoolValidator.StudentBySchoolId),
 	schoolController.getStudsBySchlId,
 );
+router.get(
+	'/:schoolId/students/details/:id',
+	validate(schoolValidator.StudentDetailsBySchoolId),
+	schoolController.getStudsDetailsBySchlId,
+);
 
 module.exports = router;
