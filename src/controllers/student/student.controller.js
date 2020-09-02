@@ -65,7 +65,9 @@ export const getSearchStudents = async (req, res) => {
     whereCondition.push(
       Sequelize.where(
         Sequelize.fn("YEAR", Sequelize.col("Students.createdAt")),
-        req.query.value
+        {
+          [Sequelize.Op.like]: `%${req.query.value}%`,
+        }
       )
     );
   } else {
