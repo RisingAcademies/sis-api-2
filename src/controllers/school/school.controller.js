@@ -1,7 +1,8 @@
 // eslint-disable-next-line
-import { Schools, Students } from "../../models";
+import { Schools, Students, Sequelize } from "../../models";
 
 import { successResponse, errorResponse } from '../../helpers';
+
 // import  from "../../models/attendances";
 
 export const getStudsDetailsBySchlId = async (req, res) => {
@@ -30,8 +31,14 @@ export const getSchools = async (req, res) => {
 	try {
 		const page = req.params.page || 1;
 		const limit = 10;
+		/* eslint-disable no-mixed-spaces-and-tabs */
+		const order = req.query.keyword && req.query.sort
+      	? [req.query.keyword, req.query.sort]
+      	: ['createdAt', 'DESC'];
+		/* eslint-enable no-mixed-spaces-and-tabs */
 		const schools = await Schools.findAndCountAll({
 			attributes: ['id', 'name', 'country', 'createdAt'],
+			order: [order],
 			offset: (page - 1) * limit,
 			limit,
 		});
@@ -44,6 +51,13 @@ export const getSchools = async (req, res) => {
 export const getStudsBySchlId = async (req, res) => {
 	const page = req.params.page || 1;
 	const limit = 10;
+
+	/* eslint-disable no-mixed-spaces-and-tabs */
+	let order = req.query.keyword && req.query.sort
+    	? [req.query.keyword, req.query.sort]
+    	: ['createdAt', 'DESC'];
+	/* eslint-enable no-mixed-spaces-and-tabs */
+	if (req.query.keyword === 'grade') order = [Sequelize.col('Schools.Attendances.grade'), req.query.sort];
 
 	try {
 		const schoolDetails = Schools.findOne({
@@ -76,8 +90,9 @@ export const getStudsBySchlId = async (req, res) => {
 					where: { id: req.params.id },
 				},
 			],
-			order: [['createdAt', 'DESC']],
+			order: [order],
 			offset: (page - 1) * limit,
+			subQuery: false,
 			limit,
 		});
 		const studentData = await Promise.all([schoolDetails, students]);
