@@ -3,7 +3,16 @@ module.exports = (sequelize, DataTypes) => {
 		'Schools',
 		{
 			name: DataTypes.STRING,
-			country: DataTypes.STRING,
+			countryId: {
+				type: DataTypes.NUMBER,
+				allowNull: false,
+				references: {
+					model: 'Counties',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
+			},
 			deletedAt: DataTypes.DATE,
 			createdAt: {
 				type: DataTypes.DATE,
@@ -16,13 +25,17 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	);
 	Schools.associate = (models) => {
+		// associations can be defined here
 		Schools.belongsToMany(models.Students, {
 			through: 'Attendances',
 			as: 'Students',
 			foreignKey: 'schoolId',
 			otherKey: 'studentId',
 		});
-		// associations can be defined here
+		Schools.belongsTo(models.Countries, {
+			foreignKey: 'countryId',
+			targetKey: 'id',
+		});
 	};
 	return Schools;
 };

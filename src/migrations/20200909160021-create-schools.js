@@ -10,8 +10,15 @@ module.exports = {
 			name: {
 				type: Sequelize.STRING,
 			},
-			country: {
-				type: Sequelize.STRING,
+			countryId: {
+				type: Sequelize.INTEGER,
+				allowNull: false,
+				references: {
+					model: 'Countries',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
 			},
 			createdAt: {
 				allowNull: false,

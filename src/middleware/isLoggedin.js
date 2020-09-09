@@ -23,6 +23,7 @@ const isLoggedin = async (req, res, next) => {
 		req.user = reqUser;
 		return next();
 	} catch (error) {
+		console.error('isLoggedin -> error', error);
 		return errorResponse(
 			req,
 			res,
