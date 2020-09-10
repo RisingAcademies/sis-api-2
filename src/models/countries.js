@@ -2,7 +2,10 @@ module.exports = (sequelize, DataTypes) => {
 	const Countries = sequelize.define(
 		'Countries',
 		{
-			name: DataTypes.STRING,
+			name: {
+				allowNull: false,
+				type: DataTypes.STRING(50),
+			},
 			deletedAt: DataTypes.DATE,
 			createdAt: {
 				type: DataTypes.DATE,
@@ -16,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	Countries.associate = (models) => {
 		// associations can be defined here
+		Countries.hasMany(models.Programs, {
+			as: 'Programs',
+			foreignKey: 'countryId',
+		});
+		Countries.hasMany(models.Clusters, {
+			as: 'Clusters',
+			foreignKey: 'countryId',
+		});
 		Countries.hasMany(models.Schools, {
 			as: 'Schools',
 			foreignKey: 'countryId',

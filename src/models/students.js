@@ -2,14 +2,49 @@ module.exports = (sequelize, DataTypes) => {
 	const Students = sequelize.define(
 		'Students',
 		{
-			num: DataTypes.STRING,
-			firstname: DataTypes.STRING,
-			lastname: DataTypes.STRING,
-			phone: DataTypes.STRING,
-			address: DataTypes.STRING,
-			dob: DataTypes.DATEONLY,
-			mother: DataTypes.STRING,
-			father: DataTypes.STRING,
+			uid: {
+				primaryKey: true,
+				allowNull: false,
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+			},
+			num: {
+				allowNull: false,
+				type: DataTypes.STRING(25),
+			},
+			firstname: {
+				allowNull: false,
+				type: DataTypes.STRING(75),
+			},
+			middlename: {
+				allowNull: false,
+				type: DataTypes.STRING(75),
+			},
+			lastname: {
+				allowNull: false,
+				type: DataTypes.STRING(75),
+			},
+			gender: DataTypes.STRING(25),
+			dateofbirth: DataTypes.DATEONLY,
+			schoolId: {
+				type: DataTypes.INTEGER,
+				references: {
+					model: 'Schools',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
+			},
+			previousSchool: DataTypes.STRING(80),
+			previousType: DataTypes.STRING(80),
+			npseYear: DataTypes.INTEGER,
+			npseScore: DataTypes.INTEGER,
+			beceYear: DataTypes.INTEGER,
+			beceScore: DataTypes.INTEGER,
+			caregiverFirst: DataTypes.STRING(75),
+			caregiverLast: DataTypes.STRING(75),
+			contactnumber: DataTypes.STRING(30),
+			contactnumber2: DataTypes.STRING(30),
 			registeredDate: DataTypes.DATE,
 			deletedAt: DataTypes.DATE,
 			createdAt: {
@@ -24,11 +59,15 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	Students.associate = (models) => {
 		// associations can be defined here
-		Students.belongsToMany(models.Schools, {
-			through: 'Attendances',
-			as: 'Schools',
+		// Students.belongsToMany(models.Schools, {
+		//   through: "Attendances",
+		//   as: "Schools",
+		//   foreignKey: "studentId",
+		//   otherKey: "schoolId",
+		// });
+		Students.hasMany(models.StudentRecords, {
+			as: 'StudentRecords',
 			foreignKey: 'studentId',
-			otherKey: 'schoolId',
 		});
 	};
 	return Students;

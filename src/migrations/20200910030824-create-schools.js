@@ -1,37 +1,53 @@
 module.exports = {
 	up: (queryInterface, Sequelize) =>
-		queryInterface.createTable('Attendances', {
+		queryInterface.createTable('Schools', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			studentId: {
+			name: {
+				allowNull: false,
+				type: Sequelize.STRING(75),
+			},
+			countryId: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Students',
+					model: 'Countries',
 					key: 'id',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
 			},
-			schoolId: {
-				type: Sequelize.INTEGER,
+			code: {
 				allowNull: false,
+				type: Sequelize.INTEGER,
+			},
+			programId: {
+				type: Sequelize.INTEGER,
 				references: {
-					model: 'Schools',
+					model: 'Programs',
 					key: 'id',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
 			},
-			grade: {
-				type: Sequelize.STRING,
-			},
-			percentage: {
+			clusterId: {
 				type: Sequelize.INTEGER,
+				references: {
+					model: 'Clusters',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
+			},
+			latitude: {
+				type: Sequelize.DECIMAL(10, 8),
+			},
+			longitude: {
+				type: Sequelize.DECIMAL(11, 8),
 			},
 			createdAt: {
 				allowNull: false,
@@ -46,5 +62,5 @@ module.exports = {
 			},
 		}),
 	down: queryInterface =>
-		queryInterface.dropTable('Attendances'),
+		queryInterface.dropTable('Schools'),
 };

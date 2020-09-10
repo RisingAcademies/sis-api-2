@@ -1,24 +1,35 @@
 module.exports = {
 	up: (queryInterface, Sequelize) =>
-		queryInterface.createTable('Schools', {
+		queryInterface.createTable('Attendances', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			name: {
-				type: Sequelize.STRING,
+			studentId: {
+				type: Sequelize.UUID,
+				allowNull: false,
+				references: {
+					model: 'Students',
+					key: 'uid',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
 			},
-			countryId: {
+			termId: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Countries',
+					model: 'Terms',
 					key: 'id',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
+			},
+			attended: {
+				type: Sequelize.DATE,
+				allowNull: false,
 			},
 			createdAt: {
 				allowNull: false,
@@ -33,5 +44,5 @@ module.exports = {
 			},
 		}),
 	down: queryInterface =>
-		queryInterface.dropTable('Schools'),
+		queryInterface.dropTable('Attendances'),
 };
