@@ -10,14 +10,16 @@ const router = express.Router();
 //= ===============================
 // API routes
 //= ===============================
-router.get('/:page', isLoggedin, schoolController.getSchools);
+
 router.get(
 	'/:id/students/:page',
+	isLoggedin,
 	validate(schoolValidator.StudentBySchoolId),
 	schoolController.getStudsBySchlId,
 );
 router.get(
 	'/:schoolId/students/details/:id',
+	isLoggedin,
 	validate(schoolValidator.StudentDetailsBySchoolId),
 	schoolController.getStudsDetailsBySchlId,
 );

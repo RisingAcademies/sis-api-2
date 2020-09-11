@@ -27,37 +27,16 @@ export const getStudsDetailsBySchlId = async (req, res) => {
 	}
 };
 
-export const getSchools = async (req, res) => {
-	try {
-		const page = req.params.page || 1;
-		const limit = 10;
-		/* eslint-disable no-mixed-spaces-and-tabs */
-		const order = req.query.keyword && req.query.sort
-      	? [req.query.keyword, req.query.sort]
-      	: ['createdAt', 'DESC'];
-		/* eslint-enable no-mixed-spaces-and-tabs */
-		const schools = await Schools.findAndCountAll({
-			attributes: ['id', 'name', 'country', 'createdAt'],
-			order: [order],
-			offset: (page - 1) * limit,
-			limit,
-		});
-		return successResponse(req, res, schools);
-	} catch (error) {
-		return errorResponse(req, res, error.message);
-	}
-};
-
 export const getStudsBySchlId = async (req, res) => {
 	const page = req.params.page || 1;
 	const limit = 10;
 
 	/* eslint-disable no-mixed-spaces-and-tabs */
 	let order = req.query.keyword && req.query.sort
-    	? [req.query.keyword, req.query.sort]
-    	: ['createdAt', 'DESC'];
+		? [req.query.keyword, req.query.sort]
+		: ['createdAt', 'DESC'];
 	/* eslint-enable no-mixed-spaces-and-tabs */
-	if (req.query.keyword === 'grade') order = [Sequelize.col('Schools.Attendances.grade'), req.query.sort];
+	if (req.query.keyword === 'grade') { order = [Sequelize.col('Schools.Attendances.grade'), req.query.sort]; }
 
 	try {
 		const schoolDetails = Schools.findOne({

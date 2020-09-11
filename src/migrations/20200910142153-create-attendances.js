@@ -8,30 +8,28 @@ module.exports = {
 				type: Sequelize.INTEGER,
 			},
 			studentId: {
-				type: Sequelize.INTEGER,
+				type: Sequelize.UUID,
 				allowNull: false,
 				references: {
 					model: 'Students',
-					key: 'id',
+					key: 'uid',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
 			},
-			schoolId: {
+			termId: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Schools',
+					model: 'Terms',
 					key: 'id',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
 			},
-			grade: {
-				type: Sequelize.STRING,
-			},
-			percentage: {
-				type: Sequelize.INTEGER,
+			attended: {
+				type: Sequelize.DATE,
+				allowNull: false,
 			},
 			createdAt: {
 				allowNull: false,
