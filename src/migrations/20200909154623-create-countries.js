@@ -1,6 +1,6 @@
 module.exports = {
-	up: (queryInterface, Sequelize) =>
-		queryInterface.createTable('Schools', {
+	up: async (queryInterface, Sequelize) => {
+		await queryInterface.createTable('countries', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
@@ -8,10 +8,8 @@ module.exports = {
 				type: Sequelize.INTEGER,
 			},
 			name: {
-				type: Sequelize.STRING,
-			},
-			country: {
-				type: Sequelize.STRING,
+				allowNull: false,
+				type: Sequelize.STRING(50),
 			},
 			createdAt: {
 				allowNull: false,
@@ -19,12 +17,15 @@ module.exports = {
 				defaultValue: Sequelize.literal('NOW()'),
 			},
 			updatedAt: {
+				allowNull: false,
 				type: Sequelize.DATE,
 			},
 			deletedAt: {
 				type: Sequelize.DATE,
 			},
-		}),
-	down: queryInterface =>
-		queryInterface.dropTable('Schools'),
+		});
+	},
+	down: async (queryInterface) => {
+		await queryInterface.dropTable('countries');
+	},
 };

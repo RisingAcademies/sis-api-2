@@ -9,27 +9,29 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.INTEGER,
 			},
 			studentId: {
-				type: DataTypes.NUMBER,
+				type: DataTypes.UUID,
 				allowNull: false,
 				references: {
 					model: 'Students',
-					key: 'id',
+					key: 'uid',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
 			},
-			schoolId: {
+			termId: {
 				type: DataTypes.NUMBER,
 				allowNull: false,
 				references: {
-					model: 'Schools',
+					model: 'Terms',
 					key: 'id',
 				},
 				onDelete: 'restrict',
 				onUpdate: 'CASCADE',
 			},
-			grade: DataTypes.STRING,
-			percentage: DataTypes.NUMBER,
+			attended: {
+				type: DataTypes.DATE,
+				allowNull: false,
+			},
 			createdAt: DataTypes.DATE,
 			updatedAt: DataTypes.DATE,
 			deletedAt: DataTypes.DATE,
@@ -42,10 +44,10 @@ module.exports = (sequelize, DataTypes) => {
 		// associations can be defined here
 		Attendances.belongsTo(models.Students, {
 			foreignKey: 'studentId',
-			targetKey: 'id',
+			targetKey: 'uid',
 		});
-		Attendances.belongsTo(models.Schools, {
-			foreignKey: 'schoolId',
+		Attendances.belongsTo(models.Terms, {
+			foreignKey: 'termId',
 			targetKey: 'id',
 		});
 	};

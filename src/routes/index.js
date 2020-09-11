@@ -3,6 +3,7 @@ import publicRoutes from './public';
 import userRoutes from './user';
 import schoolRoutes from './school';
 import studentRoutes from './student';
+import countryRoutes from './country';
 
 const app = express();
 
@@ -17,5 +18,8 @@ app.use('/school', schoolRoutes);
 
 /* School routes */
 app.use('/student', studentRoutes);
+
+/* Country routes */
+app.use('/country', countryRoutes);
 
 module.exports = app;

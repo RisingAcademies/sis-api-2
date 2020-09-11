@@ -2,8 +2,48 @@ module.exports = (sequelize, DataTypes) => {
 	const Schools = sequelize.define(
 		'Schools',
 		{
-			name: DataTypes.STRING,
-			country: DataTypes.STRING,
+			name: {
+				allowNull: false,
+				type: DataTypes.STRING(75),
+			},
+			countryId: {
+				type: DataTypes.NUMBER,
+				allowNull: false,
+				references: {
+					model: 'Counties',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
+			},
+			code: {
+				allowNull: false,
+				type: DataTypes.INTEGER,
+			},
+			programId: {
+				type: DataTypes.INTEGER,
+				references: {
+					model: 'Programs',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
+			},
+			clusterId: {
+				type: DataTypes.INTEGER,
+				references: {
+					model: 'Clusters',
+					key: 'id',
+				},
+				onDelete: 'restrict',
+				onUpdate: 'CASCADE',
+			},
+			latitude: {
+				type: DataTypes.DECIMAL(10, 8),
+			},
+			longitude: {
+				type: DataTypes.DECIMAL(11, 8),
+			},
 			deletedAt: DataTypes.DATE,
 			createdAt: {
 				type: DataTypes.DATE,
@@ -16,13 +56,29 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	);
 	Schools.associate = (models) => {
-		Schools.belongsToMany(models.Students, {
-			through: 'Attendances',
-			as: 'Students',
-			foreignKey: 'schoolId',
-			otherKey: 'studentId',
-		});
 		// associations can be defined here
+		// Schools.belongsToMany(models.Students, {
+		//   through: "Attendances",
+		//   as: "Students",
+		//   foreignKey: "schoolId",
+		//   otherKey: "studentId",
+		// });
+		Schools.belongsTo(models.Countries, {
+			foreignKey: 'countryId',
+			targetKey: 'id',
+		});
+		Schools.belongsTo(models.Programs, {
+			foreignKey: 'programId',
+			targetKey: 'id',
+		});
+		Schools.belongsTo(models.Clusters, {
+			foreignKey: 'clusterId',
+			targetKey: 'id',
+		});
+		Schools.hasMany(models.StudentRecords, {
+			as: 'StudentRecords',
+			foreignKey: 'schoolId',
+		});
 	};
 	return Schools;
 };
