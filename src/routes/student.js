@@ -16,8 +16,6 @@ router.get(
 	studentController.getExportStudents,
 );
 
-router.get('/search', isLoggedin, studentController.getSearchStudents);
-
 router.post(
 	'/',
 	isLoggedin,

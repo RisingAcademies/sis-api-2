@@ -6,29 +6,26 @@ export const getStudentById = {
 	},
 };
 
-export const newValidation = {
-	body: {
-		userId: Joi.number().required(),
-	},
-};
-
 export const addStudent = {
 	body: {
 		num: Joi.string().required(),
 		firstname: Joi.string().required(),
 		lastname: Joi.string().required(),
-		phone: Joi.string().required(),
-		grade: Joi.string().required(),
-		address: Joi.string().required(),
-		dob: Joi.string().required(),
-		mother: Joi.string().required(),
-		father: Joi.string().required(),
+		gender: Joi.string().required(),
+		dateofbirth: Joi.date().required(),
+		previousSchool: Joi.string().required(),
+		previousType: Joi.string().required(),
+		caregiverFirst: Joi.string().required(),
+		caregiverLast: Joi.string().required(),
+		contactnumber: Joi.string().required(),
+		contactnumber2: Joi.string().required(),
+		schoolId: Joi.string().required(),
 	},
 };
 
 export const editStudent = {
 	body: {
 		id: Joi.number().required(),
-		attendanceId: Joi.number().required(),
+		recordId: Joi.number().required(),
 	},
 };

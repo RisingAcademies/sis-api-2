@@ -7,8 +7,8 @@ export const login = {
 	},
 };
 
-export const newValidation = {
+export const resetPassword = {
 	body: {
-		userId: Joi.number().required(),
+		password: Joi.string().required(),
 	},
 };

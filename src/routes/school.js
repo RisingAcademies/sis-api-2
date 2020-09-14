@@ -12,11 +12,12 @@ const router = express.Router();
 //= ===============================
 
 router.get(
-	'/:id/students/:page',
+	'/:schoolId/students/:page',
 	isLoggedin,
 	validate(schoolValidator.StudentBySchoolId),
 	schoolController.getStudsBySchlId,
 );
+
 router.get(
 	'/:schoolId/students/details/:id',
 	isLoggedin,
