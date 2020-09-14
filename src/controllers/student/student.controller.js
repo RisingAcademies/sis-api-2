@@ -143,10 +143,15 @@ export const getExportStudents = async (req, res) => {
         },
       ],
       order: [[Sequelize.col("StudentRecords.createdAt"), "ASC"]],
-      group: [Sequelize.col("Students.id")],
+      // group: [Sequelize.col('StudentRecords.studentId')],
       raw: true,
       subQuery: false,
     });
+
+    /*
+		
+		
+		*/
     // const latestRecords = await StudentRecords.findAll({
     //   attributes: [
     //     Sequelize.fn("max", Sequelize.col("StudentRecords.id")),

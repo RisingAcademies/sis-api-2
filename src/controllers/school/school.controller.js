@@ -98,7 +98,7 @@ export const getStudsBySchlId = async (req, res) => {
         },
       ],
       order: [order, [Sequelize.col("StudentRecords.createdAt"), "DESC"]],
-      group: [Sequelize.col("Students.id")],
+      // group: [Sequelize.col("Students.id")],
       offset: (page - 1) * limit,
       subQuery: false,
       limit,
