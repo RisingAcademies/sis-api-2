@@ -13,9 +13,11 @@ const isLoggedin = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.SECRET);
     req.user = decoded.user;
+    console.log("isLoggedin -> req.user", req.user);
     const user = await Users.scope("withSecretColumns").findOne({
       where: { username: req.user.username },
     });
+    console.log("isLoggedin -> user", user);
     if (!user) {
       return errorResponse(req, res, "User is not found in system", 401);
     }
