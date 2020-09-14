@@ -21,11 +21,12 @@ export const getSchools = async (req, res) => {
 		const limit = 10;
 		/* eslint-disable no-mixed-spaces-and-tabs */
 		const order = req.query.keyword && req.query.sort
-      	? [req.query.keyword, req.query.sort]
-      	: ['createdAt', 'DESC'];
+			? [req.query.keyword, req.query.sort]
+			: ['createdAt', 'DESC'];
 		/* eslint-enable no-mixed-spaces-and-tabs */
+
 		const schools = await Schools.findAndCountAll({
-			attributes: ['id', 'name', 'createdAt'],
+			attributes: ['id', 'name', 'code', 'createdAt'],
 			where: {
 				countryId: req.params.countryId,
 			},

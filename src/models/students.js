@@ -3,10 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 		'Students',
 		{
 			uid: {
-				primaryKey: true,
 				allowNull: false,
-				type: DataTypes.UUID,
-				defaultValue: DataTypes.UUIDV4,
+				type: DataTypes.STRING,
 			},
 			num: {
 				allowNull: false,
@@ -57,7 +55,6 @@ module.exports = (sequelize, DataTypes) => {
 		//   otherKey: "schoolId",
 		// });
 		Students.hasMany(models.StudentRecords, {
-			as: 'StudentRecords',
 			foreignKey: 'studentId',
 		});
 	};

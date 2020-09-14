@@ -1,5 +1,7 @@
-"NUMBER","FIRST NAME","LAST NAME","PHONE NUMBER","ADDRESS","DATE OF BIRTH","MOTHER","FATHER"
-"A001","Brandie","Demougeottttt","0315704993","251 Charing Cross Way","2000-02-22","Gay","Dean"
-"aaa","aaa","aaakkkkkkkkkkkkk","aa","aa","2021-10-07","aa","aa"
-"aaa","aaa2222","mmmmmmmm","222","aassss
-","2021-10-07","aa","aa"
+"Student ID","FIRST NAME","LAST NAME","MIDDLE NAME","GRADE","GENDER","DATE OF BIRTH","PREVIOUS SCHOOL","PREVIOUS TYPE","NPSE YEAR","NPSE SCORE","BECE YEAR","BECE SCORE","CAREGIVER'S FIRST NAME","CAREGIVER'S LAST NAME","CONTACT NUMBER","CONTACT NUMBER 2","REGISTERED DATE"
+"A001","Brandie","Demougeot","aa","Class 1","Male","2000-02-22","Gay","Private School",,,,,"aa","aa","aa","aa",
+"A000","Gunner","Caudell",,"Class 6","Male","1996-03-22","Deeann","Private School",,,,,,,,,
+"A009","Patin","a","aaa","Class 6","Male","1996-03-22","Dela","Private School",,,,,"aa","aa","aa","aa",
+"aaa","aa","aa","aa","Nursery","Male","2021-10-14","a","Private School","0","0","0","0","aa","aa","aa","aa",
+"bb","bb","bbb","bbb","Nursery","Male","2021-10-14","bb","Private School","0","0","0","0","bb","bbb","bbb","bbb",
+"cc","cc","cc","cc","Nursery","Male","2021-10-14","cc","Private School","0","0","0","0","cc","cc","cc","cc",

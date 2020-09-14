@@ -6,10 +6,12 @@ module.exports = {
 				{
 					id: 1,
 					name: 'Sierra Leone',
+					code: 'SL',
 				},
 				{
 					id: 2,
 					name: 'Liberia',
+					code: 'LR',
 				},
 			],
 			{},

@@ -10,7 +10,8 @@ module.exports = {
 			'Students',
 			[
 				{
-					uid: 'cc43e6c4-62ec-4056-b500-2e1a1073f104',
+					id: 1,
+					uid: 'SL-1-20-A001',
 					num: 'A001',
 					firstname: 'Brandie',
 					lastname: 'Demougeot',
@@ -20,7 +21,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: '28b225bf-5728-4a7a-be20-1864a1e723e4',
+					id: 2,
+					uid: 'SL-2-20-A002',
 					num: 'A002',
 					firstname: 'Brenn',
 					lastname: 'Churchin',
@@ -30,7 +32,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: 'f585cf48-d28a-455c-a875-73728416a93d',
+					id: 3,
+					uid: 'SL-3-20-A003',
 					num: 'A003',
 					firstname: 'Shanda',
 					lastname: 'Landsborough',
@@ -40,7 +43,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: '8021d409-ac40-485b-8d19-b488a74efda8',
+					id: 4,
+					uid: 'SL-4-20-A004',
 					num: 'A004',
 					firstname: 'Fenelia',
 					lastname: 'Umbert',
@@ -50,7 +54,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: '99c4d2c0-1ad1-4a23-8036-99f834509268',
+					id: 5,
+					uid: 'SL-5-20-A005',
 					num: 'A005',
 					firstname: 'Robers',
 					lastname: 'Rowantree',
@@ -60,7 +65,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: '745e63a2-7bd1-4105-b086-5bc788aba0c7',
+					id: 6,
+					uid: 'SR-6-20-A006',
 					num: 'A006',
 					firstname: 'Gracia',
 					lastname: 'Lourens',
@@ -70,7 +76,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: 'd4c04f38-e3bd-4ada-8129-bceba8c0ed64',
+					id: 7,
+					uid: 'SR-7-20-A007',
 					num: 'A007',
 					firstname: 'Sheena',
 					lastname: 'Frede',
@@ -80,7 +87,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '07a96978-3e52-40ee-bd6a-77d4b7237b6a',
+					id: 8,
+					uid: 'SR-8-20-A008',
 					num: 'A008',
 					firstname: 'Neile',
 					lastname: 'Mattke',
@@ -90,7 +98,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'e1cf352a-9b9c-4a64-a6e8-9d3d1579dd40',
+					id: 9,
+					uid: 'SR-9-20-A009',
 					num: 'A009',
 					firstname: 'Adair',
 					lastname: 'Sainter',
@@ -100,7 +109,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'ae29f674-f468-4dc6-ba79-96eb3961e82a',
+					id: 10,
+					uid: 'SR-10-20-A000',
 					num: 'A000',
 					firstname: 'Nesta',
 					lastname: 'Jost',
@@ -110,7 +120,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '1f0dc33e-794a-4652-9d7d-98313e5e2507',
+					id: 11,
+					uid: 'SR-11-20-A000',
 					num: 'A001',
 					firstname: 'Constantine',
 					lastname: 'Brumby',
@@ -120,7 +131,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: '51d8d9f5-8cb3-44bd-a638-9b97aab5932c',
+					id: 12,
+					uid: 'SR-12-20-A002',
 					num: 'A002',
 					firstname: 'Valeda',
 					lastname: 'Romagosa',
@@ -130,7 +142,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: 'ccc4461c-789b-4081-8619-2e56002c5b05',
+					id: 13,
+					uid: 'SR-13-20-A003',
 					num: 'A003',
 					firstname: 'Marijo',
 					lastname: 'Karmel',
@@ -140,7 +153,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: 'c89a702a-3f47-4ae2-a7a6-fa090110f788',
+					id: 14,
+					uid: 'SR-14-20-A004',
 					num: 'A004',
 					firstname: 'Kelbee',
 					lastname: 'Gawthrop',
@@ -150,7 +164,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: 'bc50168a-260f-421f-8449-918143e7b53b',
+					id: 15,
+					uid: 'SR-15-20-A005',
 					num: 'A005',
 					firstname: 'Guntar',
 					lastname: 'Fealey',
@@ -160,7 +175,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: '63f7dcfa-7f15-42cc-8714-454af6daceb9',
+					id: 16,
+					uid: 'SR-16-20-A006',
 					num: 'A006',
 					firstname: 'Corby',
 					lastname: 'Heazel',
@@ -170,7 +186,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: '4754bcbf-3810-4176-ab42-d3d3a4d80d05',
+					id: 17,
+					uid: 'SR-17-20-A007',
 					num: 'A007',
 					firstname: 'Ruttger',
 					lastname: 'Farington',
@@ -180,7 +197,8 @@ module.exports = {
 					previousType: 'NGO School',
 				},
 				{
-					uid: '04e55249-2db8-4fab-876f-a83245713eb1',
+					id: 18,
+					uid: 'SR-18-20-A008',
 					num: 'A008',
 					firstname: 'Filberto',
 					lastname: 'Setterfield',
@@ -190,7 +208,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '4861eea8-3004-4958-a1d7-4af6274b79f1',
+					id: 19,
+					uid: 'SR-19-20-A009',
 					num: 'A009',
 					firstname: 'Dolley',
 					lastname: 'Pleaden',
@@ -200,7 +219,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: 'd16ae38f-12d4-454a-b20b-917334951dd9',
+					id: 20,
+					uid: 'SR-20-20-A000',
 					num: 'A000',
 					firstname: 'Yves',
 					lastname: 'Gatheridge',
@@ -210,7 +230,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '962ed134-0402-4cd6-8e34-173edce053c5',
+					id: 21,
+					uid: 'SR-21-21-A001',
 					num: 'A001',
 					firstname: 'Claribel',
 					lastname: 'Toffanelli',
@@ -220,7 +241,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '8512793c-8277-4c3e-9f9b-f72aad9c3684',
+					id: 22,
+					uid: 'SR-22-20-A002',
 					num: 'A002',
 					firstname: 'Fax',
 					lastname: 'Patel',
@@ -230,7 +252,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: 'ada4c512-c970-41b2-9ac7-8a8c816e460c',
+					id: 23,
+					uid: 'SR-23-20-A003',
 					num: 'A003',
 					firstname: 'Eachelle',
 					lastname: 'Bauldrey',
@@ -240,7 +263,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '1915b992-10ab-43d9-ade9-5a45b046d330',
+					id: 24,
+					uid: 'SR-24-20-A004',
 					num: 'A004',
 					firstname: 'Christi',
 					lastname: 'Maven',
@@ -250,7 +274,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: 'c69a211a-83aa-49f1-ac92-2325c60233b5',
+					id: 25,
+					uid: 'SR-25-20-A005',
 					num: 'A005',
 					firstname: 'Mile',
 					lastname: 'Collingwood',
@@ -260,7 +285,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '196045c9-ca4a-4701-a9bf-e8d8227a0784',
+					id: 26,
+					uid: 'SR-26-20-A006',
 					num: 'A006',
 					firstname: 'Carie',
 					lastname: 'MacKeever',
@@ -270,7 +296,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '4286e1eb-86d6-4a5f-aa37-75eb37cb5362',
+					id: 27,
+					uid: 'SR-27-20-A007',
 					num: 'A007',
 					firstname: 'Trumaine',
 					lastname: 'Labbez',
@@ -280,7 +307,8 @@ module.exports = {
 					previousType: 'Church/Mosque/Mission School',
 				},
 				{
-					uid: '62ba0dfd-787b-42e9-aa79-68dfc694a2ad',
+					id: 28,
+					uid: 'SR-15-20-A005',
 					num: 'A008',
 					firstname: 'Lyle',
 					lastname: 'Marvell',
@@ -290,7 +318,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '8609c66a-78e8-4e5b-8fe1-a80be5d3fde3',
+					id: 29,
+					uid: 'SR-15-20-A005',
 					num: 'A009',
 					firstname: 'Patricia',
 					lastname: 'Wharfe',
@@ -300,7 +329,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '02ff38e8-d9a9-46f1-b253-0f3fa88ae688',
+					id: 30,
+					uid: 'SR-15-20-A005',
 					num: 'A000',
 					firstname: 'Rochell',
 					lastname: 'Lauchlan',
@@ -310,7 +340,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '85453e84-17a3-450e-8dcf-57e9977aeaf5',
+					id: 31,
+					uid: 'SR-15-20-A005',
 					num: 'A001',
 					firstname: 'Juieta',
 					lastname: 'Rowesby',
@@ -320,7 +351,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '5917a1cc-2705-438e-89a6-7e5b9318ed28',
+					id: 32,
+					uid: 'SR-15-20-A005',
 					num: 'A002',
 					firstname: 'Tiertza',
 					lastname: 'Middas',
@@ -330,7 +362,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'f022eb4b-1e8c-4857-bf9b-c1f9470d30a9',
+					id: 33,
+					uid: 'SR-15-20-A005',
 					num: 'A003',
 					firstname: 'Stephana',
 					lastname: 'Pacey',
@@ -340,7 +373,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'da45f3b2-1000-471e-9ea7-47b1a74d411d',
+					id: 34,
+					uid: 'SR-15-20-A005',
 					num: 'A004',
 					firstname: 'Leone',
 					lastname: 'Behne',
@@ -350,7 +384,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'd08ed195-b150-4674-88b7-c1d39e2495b6',
+					id: 35,
+					uid: 'SR-15-20-A005',
 					num: 'A005',
 					firstname: 'Kent',
 					lastname: 'Ballinghall',
@@ -360,7 +395,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '272ed639-0706-4b8a-a0f6-1cb40a04fd58',
+					id: 36,
+					uid: 'SR-15-20-A005',
 					num: 'A006',
 					firstname: 'Torry',
 					lastname: 'Lampens',
@@ -370,7 +406,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '8e591453-8b75-45a1-b05c-2a4ba2965488',
+					id: 37,
+					uid: 'SR-15-20-A005',
 					num: 'A007',
 					firstname: 'Errick',
 					lastname: 'Jumont',
@@ -380,7 +417,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'ab7a90ea-2f23-434d-abed-a0e4d34dee60',
+					id: 38,
+					uid: 'SR-15-20-A005',
 					num: 'A008',
 					firstname: 'Thaine',
 					lastname: 'Weben',
@@ -390,7 +428,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '459d272a-b325-4b86-b6e1-d7db529d0606',
+					id: 39,
+					uid: 'SR-15-20-A005',
 					num: 'A009',
 					firstname: 'Harcourt',
 					lastname: 'Simonsson',
@@ -400,7 +439,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: 'caecf198-0583-4977-aa3b-e8c4a3656c92',
+					id: 40,
+					uid: 'SR-15-20-A005',
 					num: 'A000',
 					firstname: 'Phineas',
 					lastname: 'Shirrell',
@@ -410,7 +450,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '3273d3e9-fdc1-4032-85c9-fb2b09419c64',
+					id: 41,
+					uid: 'SR-15-20-A005',
 					num: 'A001',
 					firstname: 'Sharia',
 					lastname: 'Chasmer',
@@ -420,7 +461,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '91fec9d9-c5ab-4fe5-b5a7-35f5567c73ed',
+					id: 42,
+					uid: 'SR-15-20-A005',
 					num: 'A002',
 					firstname: 'Cooper',
 					lastname: 'Stuckey',
@@ -430,7 +472,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '992eb116-2f26-4c15-b66e-e6422cbb22bf',
+					id: 43,
+					uid: 'SR-15-20-A005',
 					num: 'A003',
 					firstname: 'Barbee',
 					lastname: 'Summerill',
@@ -440,7 +483,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '14773c60-005b-4b77-b7c3-0440343e9b6e',
+					id: 44,
+					uid: 'SR-15-20-A005',
 					num: 'A004',
 					firstname: 'Sinclare',
 					lastname: 'Aslott',
@@ -450,7 +494,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '906c8e4b-7d37-4328-968a-086d9f04ba54',
+					id: 45,
+					uid: 'SR-15-20-A005',
 					num: 'A005',
 					firstname: 'Teirtza',
 					lastname: 'Krug',
@@ -460,7 +505,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '0a012cdb-f3c6-4db6-a6f8-ad045ee159e9',
+					id: 46,
+					uid: 'SR-15-20-A005',
 					num: 'A006',
 					firstname: 'Bathsheba',
 					lastname: 'Ferriday',
@@ -470,7 +516,8 @@ module.exports = {
 					previousType: 'Government School',
 				},
 				{
-					uid: '5d3d4078-6167-426a-a7a1-acb7228ae820',
+					id: 47,
+					uid: 'SR-15-20-A005',
 					num: 'A007',
 					firstname: 'Tera',
 					lastname: 'Fossey',
@@ -480,7 +527,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: '9f5c0758-2508-4a3d-b1ff-595e132370f6',
+					id: 48,
+					uid: 'SR-15-20-A005',
 					num: 'A008',
 					firstname: 'Renaldo',
 					lastname: 'Lanktree',
@@ -490,7 +538,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: '536d1ed8-4336-42d4-8e57-154dc38dcfea',
+					id: 49,
+					uid: 'SR-15-20-A005',
 					num: 'A009',
 					firstname: 'Patin',
 					lastname: 'Vasenin',
@@ -500,7 +549,8 @@ module.exports = {
 					previousType: 'Private School',
 				},
 				{
-					uid: 'c4f605d8-17bf-4c7f-aa56-85da85e84d24',
+					id: 50,
+					uid: 'SR-15-20-A005',
 					num: 'A000',
 					firstname: 'Gunner',
 					lastname: 'Caudell',
