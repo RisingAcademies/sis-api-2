@@ -11,8 +11,8 @@ module.exports = {
 			[
 				{
 					id: 1,
-					uid: 'SL-1-20-A001',
-					num: 'A001',
+					uid: 'SL01200001', // SL01200001 =  SL+ num
+					num: '', // 01200001 = schoolid + registration year + autoincrementing
 					firstname: 'Brandie',
 					lastname: 'Demougeot',
 					gender: 'Male',
