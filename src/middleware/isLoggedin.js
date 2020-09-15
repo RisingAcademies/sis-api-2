@@ -35,7 +35,7 @@ const isLoggedin = async (req, res, next) => {
     console.error("isLoggedin -> error status", error.status); // etle ahi aavse
     console.error("isLoggedin -> error message", error.message); // etle ahi aavse
     if (error && error.original && error.original.errno === 1226) {
-      return isLoggedin(req, res, next);
+      return setTimeout(isLoggedin(req, res, next), 5000);
     }
 
     return errorResponse(
