@@ -9,15 +9,13 @@ const isLoggedin = async (req, res, next) => {
     return errorResponse(req, res, "Token is not provided", 401);
   }
   const token = req.headers.authorization;
-  console.log("isLoggedin -> token", token);
   try {
     const decoded = jwt.verify(token, process.env.SECRET);
     req.user = decoded.user;
-    console.log("isLoggedin -> req.user", req.user);
+
     const user = await Users.scope("withSecretColumns").findOne({
       where: { username: req.user.username },
     });
-    console.log("isLoggedin -> user", user);
     if (!user) {
       return errorResponse(req, res, "User is not found in system", 401);
     }
@@ -26,7 +24,10 @@ const isLoggedin = async (req, res, next) => {
     req.user = reqUser;
     return next();
   } catch (error) {
-    console.error("isLoggedin -> error", error);
+    if (error && error.original && error.original.errno === 1226) {
+      return setTimeout(isLoggedin(req, res, next), 5000);
+    }
+
     return errorResponse(
       req,
       res,
