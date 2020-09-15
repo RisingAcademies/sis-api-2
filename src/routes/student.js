@@ -16,6 +16,8 @@ router.get(
 	studentController.getExportStudents,
 );
 
+router.get('/last-id', isLoggedin, studentController.getStudentLastId);
+
 router.post(
 	'/',
 	isLoggedin,
