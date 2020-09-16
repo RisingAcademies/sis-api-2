@@ -5,6 +5,8 @@ import {
   Students,
   StudentRecords,
   Schools,
+  Clusters,
+  Programs,
   Countries,
   sequelize,
   Sequelize,
@@ -18,7 +20,11 @@ export const addStudent = async (req, res) => {
 
   try {
     const school = Schools.findOne({
-      attributes: ["id", [Sequelize.col("Country.code"), "countryCode"]],
+      attributes: [
+        "id",
+        [Sequelize.col("Country.code"), "countryCode"],
+        [Sequelize.col("Country.id"), "countryId"],
+      ],
       where: {
         id: req.body.schoolId,
       },
@@ -57,14 +63,39 @@ export const addStudent = async (req, res) => {
         409
       );
     }
+
+    const getProgram = Programs.findOne({
+      attributes: ["id"],
+      where: {
+        countryId: studentsData[0].countryId,
+      },
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
+
+    const getCluster = Clusters.findOne({
+      attributes: ["id"],
+      where: {
+        countryId: studentsData[0].countryId,
+      },
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
+
+    const getIds = await Promise.all([getProgram, getCluster]);
+
     // Creating student unique id : 01200001 = schoolid + registration year + autoincrementing
     req.body.num =
       padToNumber(req.body.schoolId, 2) +
       new Date().getFullYear().toString().substr(-2) +
       padToNumber(studentsData[1].id + 1, 4);
 
-    // Creating unique uid :  SL01200001 =  SL+ num
-    req.body.uid = studentsData[0].countryCode + req.body.num;
+    // Creating unique uid :  SL01200001 =  SL+ program id + cluster id + num
+    req.body.uid =
+      studentsData[0].countryCode +
+      padToNumber(getIds[0].id, 2) +
+      padToNumber(getIds[1].id, 3) +
+      req.body.num;
 
     // Appending student records table data
     req.body.StudentRecords = {
