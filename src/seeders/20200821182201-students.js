@@ -11,7 +11,7 @@ module.exports = {
 			[
 				{
 					id: 1,
-					uid: 'SL01200001', // SL01200001 =  SL+ num
+					uid: 'SL0100101200001', // SL01200001 =  SL+ num
 					num: '01200001', // 01200001 = schoolid + registration year + autoincrementing
 					firstname: 'Brandie',
 					lastname: 'Demougeot',
@@ -22,7 +22,7 @@ module.exports = {
 				},
 				{
 					id: 2,
-					uid: 'SL02200002',
+					uid: 'SL0100102200002',
 					num: '02200002',
 					firstname: 'Brenn',
 					lastname: 'Churchin',
@@ -33,7 +33,7 @@ module.exports = {
 				},
 				{
 					id: 3,
-					uid: 'SL03200003',
+					uid: 'SL0100103200003',
 					num: '03200003',
 					firstname: 'Shanda',
 					lastname: 'Landsborough',
@@ -44,7 +44,7 @@ module.exports = {
 				},
 				{
 					id: 4,
-					uid: 'SL04200004',
+					uid: 'SL0100104200004',
 					num: '04200004',
 					firstname: 'Fenelia',
 					lastname: 'Umbert',
@@ -55,7 +55,7 @@ module.exports = {
 				},
 				{
 					id: 5,
-					uid: 'SL05200005',
+					uid: 'SL0100105200005',
 					num: '05200005',
 					firstname: 'Robers',
 					lastname: 'Rowantree',
@@ -66,7 +66,7 @@ module.exports = {
 				},
 				{
 					id: 6,
-					uid: 'SR06200006',
+					uid: 'SR0200206200006',
 					num: '06200006',
 					firstname: 'Gracia',
 					lastname: 'Lourens',
@@ -77,7 +77,7 @@ module.exports = {
 				},
 				{
 					id: 7,
-					uid: 'SR07200007',
+					uid: 'SR0200207200007',
 					num: '07200007',
 					firstname: 'Sheena',
 					lastname: 'Frede',
@@ -88,7 +88,7 @@ module.exports = {
 				},
 				{
 					id: 8,
-					uid: 'SR08200008',
+					uid: 'SR0200208200008',
 					num: '08200008',
 					firstname: 'Neile',
 					lastname: 'Mattke',
@@ -99,7 +99,7 @@ module.exports = {
 				},
 				{
 					id: 9,
-					uid: 'SR09200009',
+					uid: 'SR0200209200009',
 					num: '09200009',
 					firstname: 'Adair',
 					lastname: 'Sainter',
@@ -110,7 +110,7 @@ module.exports = {
 				},
 				{
 					id: 10,
-					uid: 'SR10200010',
+					uid: 'SR0200210200010',
 					num: '10200010',
 					firstname: 'Nesta',
 					lastname: 'Jost',
@@ -121,7 +121,7 @@ module.exports = {
 				},
 				{
 					id: 11,
-					uid: 'SR11200011',
+					uid: 'SR0200211200011',
 					num: '11200011',
 					firstname: 'Constantine',
 					lastname: 'Brumby',
@@ -132,7 +132,7 @@ module.exports = {
 				},
 				{
 					id: 12,
-					uid: 'SR11200011',
+					uid: 'SR0200211200011',
 					num: '12200012',
 					firstname: 'Valeda',
 					lastname: 'Romagosa',
@@ -143,7 +143,7 @@ module.exports = {
 				},
 				{
 					id: 13,
-					uid: 'SR13200013',
+					uid: 'SR0200213200013',
 					num: '13200013',
 					firstname: 'Marijo',
 					lastname: 'Karmel',
@@ -154,7 +154,7 @@ module.exports = {
 				},
 				{
 					id: 14,
-					uid: 'SR14200014',
+					uid: 'SR0200214200014',
 					num: '14200014',
 					firstname: 'Kelbee',
 					lastname: 'Gawthrop',
@@ -165,7 +165,7 @@ module.exports = {
 				},
 				{
 					id: 15,
-					uid: 'SR15200015',
+					uid: 'SR0200215200015',
 					num: '15200015',
 					firstname: 'Guntar',
 					lastname: 'Fealey',
@@ -176,7 +176,7 @@ module.exports = {
 				},
 				{
 					id: 16,
-					uid: 'SR16200016',
+					uid: 'SR0200216200016',
 					num: '16200016',
 					firstname: 'Corby',
 					lastname: 'Heazel',
@@ -187,7 +187,7 @@ module.exports = {
 				},
 				{
 					id: 17,
-					uid: 'SR17200017',
+					uid: 'SR0200217200017',
 					num: '17200017',
 					firstname: 'Ruttger',
 					lastname: 'Farington',
@@ -198,7 +198,7 @@ module.exports = {
 				},
 				{
 					id: 18,
-					uid: 'SR18200018',
+					uid: 'SR0200218200018',
 					num: '18200018',
 					firstname: 'Filberto',
 					lastname: 'Setterfield',
@@ -209,7 +209,7 @@ module.exports = {
 				},
 				{
 					id: 19,
-					uid: 'SR19200019',
+					uid: 'SR0200219200019',
 					num: '19200019',
 					firstname: 'Dolley',
 					lastname: 'Pleaden',
@@ -220,7 +220,7 @@ module.exports = {
 				},
 				{
 					id: 20,
-					uid: 'SR20200020',
+					uid: 'SR0200220200020',
 					num: '20200020',
 					firstname: 'Yves',
 					lastname: 'Gatheridge',
@@ -231,7 +231,7 @@ module.exports = {
 				},
 				{
 					id: 21,
-					uid: 'SR21200021',
+					uid: 'SR0200221200021',
 					num: '21200021',
 					firstname: 'Claribel',
 					lastname: 'Toffanelli',
@@ -242,7 +242,7 @@ module.exports = {
 				},
 				{
 					id: 22,
-					uid: 'SR22200022',
+					uid: 'SR0200222200022',
 					num: '22200022',
 					firstname: 'Fax',
 					lastname: 'Patel',
@@ -253,7 +253,7 @@ module.exports = {
 				},
 				{
 					id: 23,
-					uid: 'SR23200023',
+					uid: 'SR0200223200023',
 					num: '23200023',
 					firstname: 'Eachelle',
 					lastname: 'Bauldrey',
@@ -264,7 +264,7 @@ module.exports = {
 				},
 				{
 					id: 24,
-					uid: 'SR24200024',
+					uid: 'SR0200224200024',
 					num: '24200024',
 					firstname: 'Christi',
 					lastname: 'Maven',
@@ -275,7 +275,7 @@ module.exports = {
 				},
 				{
 					id: 25,
-					uid: 'SR25200025',
+					uid: 'SR0200225200025',
 					num: '25200025',
 					firstname: 'Mile',
 					lastname: 'Collingwood',
@@ -286,7 +286,7 @@ module.exports = {
 				},
 				{
 					id: 26,
-					uid: 'SR26200026',
+					uid: 'SR0200226200026',
 					num: '26200026',
 					firstname: 'Carie',
 					lastname: 'MacKeever',
@@ -297,7 +297,7 @@ module.exports = {
 				},
 				{
 					id: 27,
-					uid: 'SR27200027',
+					uid: 'SR0200227200027',
 					num: '27200027',
 					firstname: 'Trumaine',
 					lastname: 'Labbez',
@@ -308,7 +308,7 @@ module.exports = {
 				},
 				{
 					id: 28,
-					uid: 'SR28200028',
+					uid: 'SR0200228200028',
 					num: '28200028',
 					firstname: 'Lyle',
 					lastname: 'Marvell',
@@ -319,7 +319,7 @@ module.exports = {
 				},
 				{
 					id: 29,
-					uid: 'SR29200029',
+					uid: 'SR0200229200029',
 					num: '29200029',
 					firstname: 'Patricia',
 					lastname: 'Wharfe',
@@ -330,7 +330,7 @@ module.exports = {
 				},
 				{
 					id: 30,
-					uid: 'SR30200030',
+					uid: 'SR0200230200030',
 					num: '30200030',
 					firstname: 'Rochell',
 					lastname: 'Lauchlan',
@@ -341,7 +341,7 @@ module.exports = {
 				},
 				{
 					id: 31,
-					uid: 'SR31200031',
+					uid: 'SR0200231200031',
 					num: '31200031',
 					firstname: 'Juieta',
 					lastname: 'Rowesby',
@@ -352,7 +352,7 @@ module.exports = {
 				},
 				{
 					id: 32,
-					uid: 'SR32200032',
+					uid: 'SR0200232200032',
 					num: '32200032',
 					firstname: 'Tiertza',
 					lastname: 'Middas',
@@ -363,7 +363,7 @@ module.exports = {
 				},
 				{
 					id: 33,
-					uid: 'SR33200033',
+					uid: 'SR0200233200033',
 					num: '33200033',
 					firstname: 'Stephana',
 					lastname: 'Pacey',
@@ -374,7 +374,7 @@ module.exports = {
 				},
 				{
 					id: 34,
-					uid: 'SR34200034',
+					uid: 'SR0200234200034',
 					num: '34200034',
 					firstname: 'Leone',
 					lastname: 'Behne',
@@ -385,7 +385,7 @@ module.exports = {
 				},
 				{
 					id: 35,
-					uid: 'SR35200035',
+					uid: 'SR0200235200035',
 					num: '35200035',
 					firstname: 'Kent',
 					lastname: 'Ballinghall',
@@ -396,7 +396,7 @@ module.exports = {
 				},
 				{
 					id: 36,
-					uid: 'SR36200036',
+					uid: 'SR0200236200036',
 					num: '36200036',
 					firstname: 'Torry',
 					lastname: 'Lampens',
@@ -407,7 +407,7 @@ module.exports = {
 				},
 				{
 					id: 37,
-					uid: 'SR37200037',
+					uid: 'SR0200237200037',
 					num: '37200037',
 					firstname: 'Errick',
 					lastname: 'Jumont',
@@ -418,7 +418,7 @@ module.exports = {
 				},
 				{
 					id: 38,
-					uid: 'SR38200038',
+					uid: 'SR0200238200038',
 					num: '38200038',
 					firstname: 'Thaine',
 					lastname: 'Weben',
@@ -429,7 +429,7 @@ module.exports = {
 				},
 				{
 					id: 39,
-					uid: 'SR39200039',
+					uid: 'SR0200239200039',
 					num: '39200039',
 					firstname: 'Harcourt',
 					lastname: 'Simonsson',
@@ -440,7 +440,7 @@ module.exports = {
 				},
 				{
 					id: 40,
-					uid: 'SR40200040',
+					uid: 'SR0200240200040',
 					num: '40200040',
 					firstname: 'Phineas',
 					lastname: 'Shirrell',
@@ -451,7 +451,7 @@ module.exports = {
 				},
 				{
 					id: 41,
-					uid: 'SR41200041',
+					uid: 'SR0200241200041',
 					num: '41200041',
 					firstname: 'Sharia',
 					lastname: 'Chasmer',
@@ -462,7 +462,7 @@ module.exports = {
 				},
 				{
 					id: 42,
-					uid: 'SR42200042',
+					uid: 'SR0200242200042',
 					num: '42200042',
 					firstname: 'Cooper',
 					lastname: 'Stuckey',
@@ -473,7 +473,7 @@ module.exports = {
 				},
 				{
 					id: 43,
-					uid: 'SR43200043',
+					uid: 'SR0200243200043',
 					num: '43200043',
 					firstname: 'Barbee',
 					lastname: 'Summerill',
@@ -484,7 +484,7 @@ module.exports = {
 				},
 				{
 					id: 44,
-					uid: 'SR44200044',
+					uid: 'SR0200244200044',
 					num: '44200044',
 					firstname: 'Sinclare',
 					lastname: 'Aslott',
@@ -495,7 +495,7 @@ module.exports = {
 				},
 				{
 					id: 45,
-					uid: 'SR45200045',
+					uid: 'SR0200245200045',
 					num: '45200045',
 					firstname: 'Teirtza',
 					lastname: 'Krug',
@@ -506,7 +506,7 @@ module.exports = {
 				},
 				{
 					id: 46,
-					uid: 'SR46200046',
+					uid: 'SR0200246200046',
 					num: '46200046',
 					firstname: 'Bathsheba',
 					lastname: 'Ferriday',
@@ -517,7 +517,7 @@ module.exports = {
 				},
 				{
 					id: 47,
-					uid: 'SR47200047',
+					uid: 'SR0200247200047',
 					num: '47200047',
 					firstname: 'Tera',
 					lastname: 'Fossey',
@@ -528,7 +528,7 @@ module.exports = {
 				},
 				{
 					id: 48,
-					uid: 'SR48200048',
+					uid: 'SR0200248200048',
 					num: '48200048',
 					firstname: 'Renaldo',
 					lastname: 'Lanktree',
@@ -539,7 +539,7 @@ module.exports = {
 				},
 				{
 					id: 49,
-					uid: 'SR49200049',
+					uid: 'SR0200249200049',
 					num: '49200049',
 					firstname: 'Patin',
 					lastname: 'Vasenin',
@@ -550,7 +550,7 @@ module.exports = {
 				},
 				{
 					id: 50,
-					uid: 'SR50200050',
+					uid: 'SR0200250200050',
 					num: '50200050',
 					firstname: 'Gunner',
 					lastname: 'Caudell',

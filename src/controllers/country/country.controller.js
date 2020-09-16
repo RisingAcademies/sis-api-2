@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { Countries, Schools } from "../../models";
+import { Countries, Schools, Grades } from "../../models";
 import { successResponse, errorResponse } from '../../helpers';
 
 export const getAllCountries = async (req, res) => {
@@ -21,8 +21,8 @@ export const getSchools = async (req, res) => {
 		const limit = 10;
 		/* eslint-disable no-mixed-spaces-and-tabs */
 		const order = req.query.keyword && req.query.sort
-			? [req.query.keyword, req.query.sort]
-			: ['createdAt', 'DESC'];
+      	? [req.query.keyword, req.query.sort]
+      	: ['createdAt', 'DESC'];
 		/* eslint-enable no-mixed-spaces-and-tabs */
 
 		const schools = await Schools.findAndCountAll({
@@ -36,6 +36,21 @@ export const getSchools = async (req, res) => {
 		});
 		return successResponse(req, res, schools);
 	} catch (error) {
+		return errorResponse(req, res, error.message);
+	}
+};
+
+export const getCountryGrades = async (req, res) => {
+	try {
+		const grades = await Grades.findAll({
+			attributes: ['id', 'name'],
+			where: {
+				countryId: req.params.countryId,
+			},
+		});
+		return successResponse(req, res, grades);
+	} catch (error) {
+		console.error('getAllCountries -> error', error);
 		return errorResponse(req, res, error.message);
 	}
 };

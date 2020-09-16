@@ -5,8 +5,9 @@ import {
   Students,
   StudentRecords,
   Schools,
+  Clusters,
+  Programs,
   Countries,
-  sequelize,
   Sequelize,
 } from "../../models";
 /* eslint-enable */
@@ -14,11 +15,15 @@ import { successResponse, errorResponse } from "../../helpers";
 import padToNumber from "../../helpers/utils";
 
 export const addStudent = async (req, res) => {
-  const t = await sequelize.transaction();
+  // const t = await sequelize.transaction();
 
   try {
     const school = Schools.findOne({
-      attributes: ["id", [Sequelize.col("Country.code"), "countryCode"]],
+      attributes: [
+        "id",
+        [Sequelize.col("Country.code"), "countryCode"],
+        [Sequelize.col("Country.id"), "countryId"],
+      ],
       where: {
         id: req.body.schoolId,
       },
@@ -35,7 +40,48 @@ export const addStudent = async (req, res) => {
       raw: true,
     });
 
-    const studentsData = await Promise.all([school, getLastRecord]);
+    const getStudentByNum = Students.findOne({
+      attributes: ["id"],
+      where: {
+        num: req.body.num,
+      },
+      raw: true,
+    });
+
+    const studentsData = await Promise.all([
+      school,
+      getLastRecord,
+      getStudentByNum,
+    ]);
+
+    if (studentsData[2] !== null) {
+      return successResponse(
+        req,
+        res,
+        { message: "Student Id is already exist!" },
+        409
+      );
+    }
+
+    const getProgram = Programs.findOne({
+      attributes: ["id"],
+      where: {
+        countryId: studentsData[0].countryId,
+      },
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
+
+    const getCluster = Clusters.findOne({
+      attributes: ["id"],
+      where: {
+        countryId: studentsData[0].countryId,
+      },
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
+
+    const getIds = await Promise.all([getProgram, getCluster]);
 
     // Creating student unique id : 01200001 = schoolid + registration year + autoincrementing
     req.body.num =
@@ -43,26 +89,29 @@ export const addStudent = async (req, res) => {
       new Date().getFullYear().toString().substr(-2) +
       padToNumber(studentsData[1].id + 1, 4);
 
-    // Creating unique uid :  SL01200001 =  SL+ num
-    req.body.uid = studentsData[0].countryCode + req.body.num;
+    // Creating unique uid :  SL01200001 =  SL+ program id + cluster id + num
+    req.body.uid =
+      studentsData[0].countryCode +
+      padToNumber(getIds[0].id, 2) +
+      padToNumber(getIds[1].id, 3) +
+      req.body.num;
 
     // Appending student records table data
     req.body.StudentRecords = {
       schoolId: req.body.schoolId,
-      grade: req.body.grade,
+      gradeId: req.body.grade,
     };
 
     const student = await Students.create(req.body, {
       include: [StudentRecords],
-      transaction: t,
     });
 
-    await t.commit();
+    // await t.commit();
 
     return successResponse(req, res, student);
   } catch (error) {
     console.error("addStudent -> error", error);
-    await t.rollback();
+    // await t.rollback();
     return errorResponse(req, res, error.message);
   }
 };
@@ -76,7 +125,7 @@ export const editStudent = async (req, res) => {
     });
     const attendance = StudentRecords.update(
       {
-        grade: req.body.grade,
+        gradeId: req.body.grade,
       },
       {
         where: {
@@ -257,6 +306,19 @@ export const deleteStudent = async (req, res) => {
       },
     });
     return successResponse(req, res);
+  } catch (error) {
+    return errorResponse(req, res, error.message);
+  }
+};
+
+export const getStudentLastId = async (req, res) => {
+  try {
+    const getLastRecord = await Students.findOne({
+      attributes: ["id"],
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
+    return successResponse(req, res, getLastRecord);
   } catch (error) {
     return errorResponse(req, res, error.message);
   }
