@@ -1,15 +1,35 @@
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		await queryInterface.createTable('Exams', {
+		await queryInterface.createTable('Courses', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			grade: {
+			name: {
 				allowNull: false,
-				type: Sequelize.DECIMAL(5, 2),
+				type: Sequelize.STRING(50),
+			},
+			gradeId: {
+				type: Sequelize.INTEGER,
+				allowNull: false,
+				references: {
+					model: 'Grades',
+					key: 'id',
+				},
+				onDelete: 'CASCADE',
+				onUpdate: 'CASCADE',
+			},
+			termId: {
+				type: Sequelize.INTEGER,
+				allowNull: false,
+				references: {
+					model: 'Terms',
+					key: 'id',
+				},
+				onDelete: 'CASCADE',
+				onUpdate: 'CASCADE',
 			},
 			recordId: {
 				type: Sequelize.INTEGER,
@@ -20,9 +40,6 @@ module.exports = {
 				},
 				onDelete: 'CASCADE',
 				onUpdate: 'CASCADE',
-			},
-			maxGrade: {
-				type: Sequelize.DECIMAL(5, 2),
 			},
 			createdAt: {
 				allowNull: false,
@@ -38,6 +55,6 @@ module.exports = {
 		});
 	},
 	down: async (queryInterface) => {
-		await queryInterface.dropTable('exams');
+		await queryInterface.dropTable('Courses');
 	},
 };

@@ -26,8 +26,12 @@ module.exports = {
 				onDelete: 'CASCADE',
 				onUpdate: 'CASCADE',
 			},
-			grade: {
-				type: Sequelize.STRING(25),
+			gradeId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'Grades',
+					key: 'id',
+				},
 			},
 			schoolId: {
 				type: Sequelize.INTEGER,

@@ -13,6 +13,8 @@ router.get(
 	isLoggedin,
 	countryController.getSchools,
 );
+router.get('/:countryId/grade', isLoggedin, countryController.getCountryGrades);
+
 router.get('/', isLoggedin, countryController.getAllCountries);
 
 module.exports = router;

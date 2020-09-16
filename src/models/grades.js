@@ -1,31 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-	const Exams = sequelize.define(
-		'Exams',
+	const Grades = sequelize.define(
+		'Grades',
 		{
 			name: {
 				allowNull: false,
 				type: DataTypes.STRING(50),
 			},
-			gradeId: {
+			countryId: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Grades',
+					model: 'Countries',
 					key: 'id',
 				},
 				onDelete: 'CASCADE',
 				onUpdate: 'CASCADE',
-			},
-			recordId: {
-				type: DataTypes.INTEGER,
-				allowNull: false,
-				references: {
-					model: 'StudentRecords',
-					key: 'id',
-				},
-			},
-			maxGrade: {
-				type: DataTypes.DECIMAL(5, 2),
 			},
 			deletedAt: DataTypes.DATE,
 			createdAt: {
@@ -38,13 +27,20 @@ module.exports = (sequelize, DataTypes) => {
 			paranoid: true,
 		},
 	);
-	Exams.associate = (models) => {
-		Exams.belongsTo(models.StudentRecords, {
-			foreignKey: 'recordId',
+	Grades.associate = (models) => {
+		// associations can be defined here
+		Grades.belongsTo(models.Countries, {
+			foreignKey: 'countryId',
 		});
-		Exams.belongsTo(models.Grades, {
+		Grades.hasMany(models.StudentRecords, {
+			foreignKey: 'gradeId',
+		});
+		Grades.hasMany(models.Courses, {
+			foreignKey: 'gradeId',
+		});
+		Grades.hasMany(models.Exams, {
 			foreignKey: 'gradeId',
 		});
 	};
-	return Exams;
+	return Grades;
 };
