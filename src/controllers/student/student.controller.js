@@ -35,8 +35,28 @@ export const addStudent = async (req, res) => {
       raw: true,
     });
 
-    const studentsData = await Promise.all([school, getLastRecord]);
+    const getStudentByNum = await Students.findOne({
+      attributes: ["id"],
+      where: {
+        num: req.body.num,
+      },
+      raw: true,
+    });
 
+    const studentsData = await Promise.all([
+      school,
+      getLastRecord,
+      getStudentByNum,
+    ]);
+
+    if (studentsData[2] !== null) {
+      return successResponse(
+        req,
+        res,
+        { message: "Student Id is already exist!" },
+        409
+      );
+    }
     // Creating student unique id : 01200001 = schoolid + registration year + autoincrementing
     req.body.num =
       padToNumber(req.body.schoolId, 2) +
@@ -257,6 +277,19 @@ export const deleteStudent = async (req, res) => {
       },
     });
     return successResponse(req, res);
+  } catch (error) {
+    return errorResponse(req, res, error.message);
+  }
+};
+
+export const getStudentLastId = async (req, res) => {
+  try {
+    const getLastRecord = await Students.findOne({
+      attributes: ["id"],
+      order: [["createdAt", "DESC"]],
+      raw: true,
+    });
+    return successResponse(req, res, getLastRecord);
   } catch (error) {
     return errorResponse(req, res, error.message);
   }
