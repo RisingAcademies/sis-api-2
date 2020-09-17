@@ -3,6 +3,7 @@ import {
   Schools,
   Students,
   Countries,
+  Grades,
   StudentRecords,
   Sequelize,
 } from "../../models";
@@ -38,12 +39,12 @@ export const getStudsBySchlId = async (req, res) => {
 
 		/* eslint-disable no-mixed-spaces-and-tabs */
 		let order = req.query.orderKeyword && req.query.sort
-			? [req.query.orderKeyword, req.query.sort]
-			: ['createdAt', 'DESC'];
+      	? [req.query.orderKeyword, req.query.sort]
+      	: ['createdAt', 'DESC'];
 		/* eslint-enable no-mixed-spaces-and-tabs */
 
 		if (req.query.orderKeyword === 'grade') {
-			order = [Sequelize.col('StudentRecords.grade'), req.query.sort];
+			order = [Sequelize.col('StudentRecords.Grade.name'), req.query.sort];
 		}
 
 		// Search details
@@ -71,6 +72,7 @@ export const getStudsBySchlId = async (req, res) => {
 				'id',
 				'name',
 				[Sequelize.col('Country.code'), 'countryCode'],
+				[Sequelize.col('Country.id'), 'countryId'],
 			],
 			where: {
 				id: req.params.schoolId,
@@ -85,6 +87,11 @@ export const getStudsBySchlId = async (req, res) => {
 
 		const students = Students.findAndCountAll({
 			attributes: {
+				include: [
+					[Sequelize.col('StudentRecords.Grade.id'), 'gradeId'],
+					[Sequelize.col('StudentRecords.Grade.name'), 'grade'],
+					[Sequelize.col('StudentRecords.id'), 'recordId'],
+				],
 				exclude: ['deletedAt'],
 			},
 			distinct: true,
@@ -92,14 +99,21 @@ export const getStudsBySchlId = async (req, res) => {
 			include: [
 				{
 					model: StudentRecords,
-					attributes: ['id', 'grade'],
+					attributes: [],
 					where: { schoolId: req.params.schoolId },
+					include: [
+						{
+							model: Grades,
+							attributes: [],
+						},
+					],
 				},
 			],
 			order: [order, [Sequelize.col('StudentRecords.createdAt'), 'DESC']],
 			// group: [Sequelize.col("Students.id")],
 			offset: (page - 1) * limit,
 			subQuery: false,
+			raw: true,
 			limit,
 		});
 

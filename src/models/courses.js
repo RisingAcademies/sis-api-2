@@ -6,8 +6,15 @@ module.exports = (sequelize, DataTypes) => {
 				allowNull: false,
 				type: DataTypes.STRING(50),
 			},
-			grade: {
-				type: DataTypes.STRING(25),
+			gradeId: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				references: {
+					model: 'Grades',
+					key: 'id',
+				},
+				onDelete: 'CASCADE',
+				onUpdate: 'CASCADE',
 			},
 			termId: {
 				type: DataTypes.INTEGER,
@@ -47,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
 		});
 		Courses.belongsTo(models.StudentRecords, {
 			foreignKey: 'recordId',
+		});
+		Courses.belongsTo(models.Grades, {
+			foreignKey: 'Grades',
+			targetKey: 'id',
 		});
 	};
 	return Courses;

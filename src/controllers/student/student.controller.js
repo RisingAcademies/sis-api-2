@@ -98,7 +98,7 @@ export const addStudent = async (req, res) => {
 		// Appending student records table data
 		req.body.StudentRecords = {
 			schoolId: req.body.schoolId,
-			grade: req.body.grade,
+			gradeId: req.body.grade,
 		};
 
 		const student = await Students.create(req.body, {
@@ -125,7 +125,7 @@ export const editStudent = async (req, res) => {
 		});
 		const attendance = StudentRecords.update(
 			{
-				grade: req.body.grade,
+				gradeId: req.body.grade,
 			},
 			{
 				where: {
