@@ -7,6 +7,7 @@ import {
   Schools,
   Clusters,
   Programs,
+  Grades,
   Countries,
   Sequelize,
 } from "../../models";
@@ -84,10 +85,11 @@ export const addStudent = async (req, res) => {
     const getIds = await Promise.all([getProgram, getCluster]);
 
     // Creating student unique id : 01200001 = schoolid + registration year + autoincrementing
-    req.body.num =
-      padToNumber(req.body.schoolId, 2) +
-      new Date().getFullYear().toString().substr(-2) +
-      padToNumber(studentsData[1].id + 1, 4);
+    if (!req.body.num)
+      req.body.num =
+        padToNumber(req.body.schoolId, 2) +
+        new Date().getFullYear().toString().substr(-2) +
+        padToNumber(studentsData[1].id + 1, 4);
 
     // Creating unique uid :  SL01200001 =  SL+ program id + cluster id + num
     req.body.uid =
@@ -192,10 +194,27 @@ export const getExportStudents = async (req, res) => {
 
     const students = await Students.findAll({
       attributes: {
+        include: [
+          [
+            Sequelize.literal(`(
+            SELECT 
+              name 
+            FROM 
+              studentrecords 
+            JOIN 
+              grades 
+            ON 
+              grades.id = studentrecords.gradeId 
+            WHERE 
+              StudentRecords.studentId = Students.id 
+            ORDER BY 
+              studentrecords.createdAt DESC LIMIT 1
+          )`),
+            "latestGrade",
+          ],
+        ],
         exclude: ["deletedAt", "updatedAt"],
-        include: ["StudentRecords.grade"],
       },
-      distinct: true,
       where: whereCondition,
       include: [
         {
@@ -204,52 +223,12 @@ export const getExportStudents = async (req, res) => {
           where: { schoolId: req.params.schoolId },
         },
       ],
-      order: [[Sequelize.col("StudentRecords.createdAt"), "ASC"]],
-      // group: [Sequelize.col('StudentRecords.studentId')],
-      raw: true,
-      subQuery: false,
     });
 
-    /*
-
-
-		*/
-    // const latestRecords = await StudentRecords.findAll({
-    //   attributes: [
-    //     Sequelize.fn("max", Sequelize.col("StudentRecords.id")),
-    //     "id",
-    //   ],
-    //   where: { schoolId: req.params.schoolId },
-    //   group: ["studentId"],
-    //   raw: true,
-    // });
-    // const latestRecordIds = latestRecords.map((records) => records.id);
-    // console.log("getExportStudents -> latestRecordIds", latestRecordIds);
-    // // console.log("getExportStudents -> latestRecordIds", latestRecordIds);
-    // const students = await StudentRecords.findAll({
-    //   attributes: [
-    //     "id",
-    //     "grade",
-    //     "Student.num",
-    //     "Student.firstname",
-    //     "Student.lastname",
-    //     "Student.middlename",
-    //   ],
-    //   where: {
-    //     id: {
-    //       [Sequelize.Op.in]: latestRecordIds,
-    //     },
-    //   },
-    //   include: [
-    //     {
-    //       model: Students,
-    //       attributes: [],
-    //       where: whereCondition,
-    //     },
-    //   ],
-    //   order: [[Sequelize.col("studentrecords.createdAt"), "DESC"]],
-    //   raw: true,
-    // });
+    students.map((student) => {
+      student.grade = student.dataValues.latestGrade;
+      return student;
+    });
 
     await csvWriter.writeRecords(students);
     return successResponse(req, res, {

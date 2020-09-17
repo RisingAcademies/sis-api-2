@@ -43,9 +43,7 @@ export const getStudsBySchlId = async (req, res) => {
       	: ['createdAt', 'DESC'];
 		/* eslint-enable no-mixed-spaces-and-tabs */
 
-		if (req.query.orderKeyword === 'grade') {
-			order = [Sequelize.col('StudentRecords.Grade.name'), req.query.sort];
-		}
+		if (req.query.orderKeyword === 'grade') order = [Sequelize.literal('grade'), req.query.sort];
 
 		// Search details
 		if (req.query.searchKeyword && req.query.value) {
@@ -88,32 +86,51 @@ export const getStudsBySchlId = async (req, res) => {
 		const students = Students.findAndCountAll({
 			attributes: {
 				include: [
-					[Sequelize.col('StudentRecords.Grade.id'), 'gradeId'],
-					[Sequelize.col('StudentRecords.Grade.name'), 'grade'],
-					[Sequelize.col('StudentRecords.id'), 'recordId'],
+					[
+						Sequelize.literal(`(
+              SELECT 
+                name 
+              FROM 
+                studentrecords 
+              JOIN 
+                grades 
+              ON 
+                grades.id = studentrecords.gradeId 
+              WHERE 
+                StudentRecords.studentId = Students.id 
+              ORDER BY 
+                studentrecords.createdAt DESC LIMIT 1
+            )`),
+						'grade',
+					],
+					[
+						Sequelize.literal(`(
+              SELECT gradeId FROM studentrecords WHERE StudentRecords.studentId = Students.id ORDER BY createdAt DESC LIMIT 1
+            )`),
+						'gradeId',
+					],
+					[
+						Sequelize.literal(`(
+              SELECT id FROM studentrecords WHERE StudentRecords.studentId = Students.id ORDER BY createdAt DESC LIMIT 1
+            )`),
+						'recordId',
+					],
 				],
 				exclude: ['deletedAt'],
 			},
-			distinct: true,
 			where: whereCondition,
-			include: [
-				{
-					model: StudentRecords,
+			include: {
+				model: StudentRecords,
+				attributes: [],
+				where: { schoolId: req.params.schoolId },
+				include: {
+					model: Grades,
 					attributes: [],
-					where: { schoolId: req.params.schoolId },
-					include: [
-						{
-							model: Grades,
-							attributes: [],
-						},
-					],
 				},
-			],
-			order: [order, [Sequelize.col('StudentRecords.createdAt'), 'DESC']],
-			// group: [Sequelize.col("Students.id")],
+			},
+			order: [order],
+
 			offset: (page - 1) * limit,
-			subQuery: false,
-			raw: true,
 			limit,
 		});
 
