@@ -200,15 +200,15 @@ export const getExportStudents = async (req, res) => {
             SELECT 
               name 
             FROM 
-              studentrecords 
+              StudentRecords 
             JOIN 
-              grades 
+              Grades 
             ON 
-              grades.id = studentrecords.gradeId 
+              Grades.id = StudentRecords.gradeId 
             WHERE 
               StudentRecords.studentId = Students.id 
             ORDER BY 
-              studentrecords.createdAt DESC LIMIT 1
+              StudentRecords.createdAt DESC LIMIT 1
           )`),
             "latestGrade",
           ],
@@ -225,11 +225,12 @@ export const getExportStudents = async (req, res) => {
       ],
     });
 
-    students.map((student) => {
+    students.map(student => {
       student.grade = student.dataValues.latestGrade;
       return student;
     });
 
+    console.log("getExportStudents -> students", students);
     await csvWriter.writeRecords(students);
     return successResponse(req, res, {
       // eslint-disable-next-line
@@ -294,9 +295,10 @@ export const getStudentLastId = async (req, res) => {
   try {
     const getLastRecord = await Students.findOne({
       attributes: ["id"],
-      order: [["createdAt", "DESC"]],
+      order: [["id", "DESC"]],
       raw: true,
     });
+    console.log("getStudentLastId -> getLastRecord", getLastRecord);
     return successResponse(req, res, getLastRecord);
   } catch (error) {
     return errorResponse(req, res, error.message);
