@@ -1,9 +1,9 @@
-import express from "express";
-import validate from "express-validation";
+import express from 'express';
+import validate from 'express-validation';
 
-import * as schoolController from "../controllers/school/school.controller";
-import * as schoolValidator from "../controllers/school/school.validator";
-import isLoggedin from "../middleware/isLoggedin";
+import * as schoolController from '../controllers/school/school.controller';
+import * as schoolValidator from '../controllers/school/school.validator';
+import isLoggedin from '../middleware/isLoggedin';
 
 const router = express.Router();
 
@@ -12,17 +12,17 @@ const router = express.Router();
 //= ===============================
 
 router.get(
-  "/:schoolId/students/",
-  isLoggedin,
-  validate(schoolValidator.StudentBySchoolId),
-  schoolController.getStudsBySchlId
+	'/:schoolId/students/',
+	isLoggedin,
+	validate(schoolValidator.StudentBySchoolId),
+	schoolController.getStudsBySchlId,
 );
 
 router.get(
-  "/:schoolId/students/details/:id",
-  isLoggedin,
-  validate(schoolValidator.StudentDetailsBySchoolId),
-  schoolController.getStudsDetailsBySchlId
+	'/:schoolId/students/details/:id',
+	isLoggedin,
+	validate(schoolValidator.StudentDetailsBySchoolId),
+	schoolController.getStudsDetailsBySchlId,
 );
 
 module.exports = router;
