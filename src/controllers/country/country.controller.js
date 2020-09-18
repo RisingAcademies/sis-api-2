@@ -1,12 +1,21 @@
+import Promise from 'bluebird';
 // eslint-disable-next-line
 import { Countries, Schools, Grades } from "../../models";
 import { successResponse, errorResponse } from '../../helpers';
 
+const { join } = Promise;
+
 export const getAllCountries = async (req, res) => {
 	try {
-		const countries = await Countries.findAll({
+		/* eslint-disable no-mixed-spaces-and-tabs */
+		const order = req.query.keyword && req.query.sort
+      	? [req.query.keyword, req.query.sort]
+      	: ['createdAt', 'DESC'];
+		/* eslint-enable no-mixed-spaces-and-tabs */
+
+		const countries = await Countries.findAndCountAll({
 			attributes: ['id', 'name'],
-			order: [['createdAt', 'DESC']],
+			order: [order],
 		});
 		return successResponse(req, res, countries);
 	} catch (error) {
@@ -17,24 +26,36 @@ export const getAllCountries = async (req, res) => {
 
 export const getSchools = async (req, res) => {
 	try {
-		const page = req.params.page || 1;
-		const limit = 10;
+		// const page = req.params.page || 1;
+		// const limit = 10;
 		/* eslint-disable no-mixed-spaces-and-tabs */
 		const order = req.query.keyword && req.query.sort
       	? [req.query.keyword, req.query.sort]
       	: ['createdAt', 'DESC'];
 		/* eslint-enable no-mixed-spaces-and-tabs */
 
-		const schools = await Schools.findAndCountAll({
+		const getCountryDetails = Countries.findOne({
+			attributes: ['id', 'name'],
+			where: {
+				id: req.params.countryId,
+			},
+		});
+
+		const getSchoolData = Schools.findAndCountAll({
 			attributes: ['id', 'name', 'code', 'createdAt'],
 			where: {
 				countryId: req.params.countryId,
 			},
 			order: [order],
-			offset: (page - 1) * limit,
-			limit,
+			// offset: (page - 1) * limit,
+			// limit,
 		});
-		return successResponse(req, res, schools);
+
+		return join(getCountryDetails, getSchoolData, (countryDetails, school) =>
+			successResponse(req, res, {
+				country: countryDetails,
+				school,
+			}));
 	} catch (error) {
 		return errorResponse(req, res, error.message);
 	}

@@ -34,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
 			caregiverLast: DataTypes.STRING(75),
 			contactnumber: DataTypes.STRING(30),
 			contactnumber2: DataTypes.STRING(30),
-			registeredDate: DataTypes.DATE,
+			registeredDate: {
+				type: DataTypes.DATE,
+				defaultValue: sequelize.literal('NOW()'),
+			},
 			deletedAt: DataTypes.DATE,
 			createdAt: {
 				type: DataTypes.DATE,
