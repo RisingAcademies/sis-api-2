@@ -69,6 +69,7 @@ module.exports = {
 			},
 			registeredDate: {
 				type: Sequelize.DATE,
+				defaultValue: Sequelize.literal('NOW()'),
 			},
 			createdAt: {
 				allowNull: false,

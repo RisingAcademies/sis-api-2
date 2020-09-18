@@ -2,7 +2,7 @@
   "name": "risingacad-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
     "test:cover": "jest --coverage",
@@ -18,6 +18,7 @@
     "axios": "^0.18.0",
     "babel-loader": "^8.0.0-beta.0",
     "bcrypt": "^5.0.0",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
     "cors": "^2.8.5",
