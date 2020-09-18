@@ -8,11 +8,7 @@ const router = express.Router();
 //= ===============================
 // API routes
 //= ===============================
-router.get(
-	'/:countryId/school/:page',
-	isLoggedin,
-	countryController.getSchools,
-);
+router.get('/:countryId/school', isLoggedin, countryController.getSchools);
 router.get('/:countryId/grade', isLoggedin, countryController.getCountryGrades);
 
 router.get('/', isLoggedin, countryController.getAllCountries);
