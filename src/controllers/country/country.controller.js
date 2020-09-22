@@ -66,10 +66,17 @@ export const getSchools = async (req, res) => {
 
 export const getCountryGrades = async (req, res) => {
   try {
+    const school = await Schools.findOne({
+      attributes: ["countryId"],
+      where: {
+        id: req.params.schoolId,
+      },
+      raw: true,
+    });
     const grades = await Grades.findAll({
       attributes: ["id", "name"],
       where: {
-        countryId: req.params.countryId,
+        countryId: school.countryId,
       },
     });
     return successResponse(req, res, grades);
