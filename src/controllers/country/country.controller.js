@@ -1,7 +1,7 @@
-import Promise from "bluebird";
+import Promise from 'bluebird';
 // eslint-disable-next-line
-import { Countries, Schools, Grades } from "../../models";
-import { successResponse, errorResponse } from "../../helpers";
+import { Countries, Schools, Grades } from '../../models';
+import { successResponse, errorResponse } from '../../helpers';
 
 const { join } = Promise;
 
@@ -11,16 +11,16 @@ export const getAllCountries = async (req, res) => {
     const order =
       req.query.keyword && req.query.sort
         ? [req.query.keyword, req.query.sort]
-        : ["name", "ASC"];
+        : ['name', 'ASC'];
     /* eslint-enable no-mixed-spaces-and-tabs */
 
     const countries = await Countries.findAndCountAll({
-      attributes: ["id", "name"],
+      attributes: ['id', 'name'],
       order: [order],
     });
     return successResponse(req, res, countries);
   } catch (error) {
-    console.error("getAllCountries -> error", error);
+    console.error('getAllCountries -> error', error);
     return errorResponse(req, res, error.message);
   }
 };
@@ -33,18 +33,18 @@ export const getSchools = async (req, res) => {
     const order =
       req.query.keyword && req.query.sort
         ? [req.query.keyword, req.query.sort]
-        : ["name", "ASC"];
+        : ['name', 'ASC'];
     /* eslint-enable no-mixed-spaces-and-tabs */
 
     const getCountryDetails = Countries.findOne({
-      attributes: ["id", "name"],
+      attributes: ['id', 'name'],
       where: {
         id: req.params.countryId,
       },
     });
 
     const getSchoolData = Schools.findAndCountAll({
-      attributes: ["id", "name", "code", "createdAt"],
+      attributes: ['id', 'name', 'code', 'createdAt'],
       where: {
         countryId: req.params.countryId,
       },
@@ -66,15 +66,22 @@ export const getSchools = async (req, res) => {
 
 export const getCountryGrades = async (req, res) => {
   try {
-    const grades = await Grades.findAll({
-      attributes: ["id", "name"],
+    const school = await Schools.findOne({
+      attributes: ['countryId'],
       where: {
-        countryId: req.params.countryId,
+        id: req.params.schoolId,
+      },
+      raw: true,
+    });
+    const grades = await Grades.findAll({
+      attributes: ['id', 'name'],
+      where: {
+        countryId: school.countryId,
       },
     });
     return successResponse(req, res, grades);
   } catch (error) {
-    console.error("getAllCountries -> error", error);
+    console.error('getAllCountries -> error', error);
     return errorResponse(req, res, error.message);
   }
 };
