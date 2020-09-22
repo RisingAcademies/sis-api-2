@@ -42,11 +42,16 @@ export const getStudsBySchlId = async (req, res) => {
 
 		/* eslint-disable no-mixed-spaces-and-tabs */
 		let order = req.query.orderKeyword && req.query.sort
-			? [[req.query.orderKeyword, req.query.sort]]
-			: [['lastname', 'ASC']];
+      	? [[req.query.orderKeyword, req.query.sort]]
+      	: [['lastname', 'ASC']];
 		/* eslint-enable no-mixed-spaces-and-tabs */
 
-		if (req.query.orderKeyword === 'grade') { order = [[Sequelize.literal('grade'), req.query.sort]]; } else if (req.query.orderKeyword === 'lastname') {
+		if (req.query.orderKeyword === 'grade') {
+			order = [[Sequelize.literal('grade'), req.query.sort]];
+		} else if (
+			req.query.orderKeyword === 'lastname'
+      && req.query.sort === 'ASC'
+		) {
 			order = [
 				[Sequelize.literal('registeredDate IS NULL DESC')],
 				['lastname', req.query.sort],
